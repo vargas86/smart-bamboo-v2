@@ -13,7 +13,10 @@
     {%- endif -%}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+      {% comment %} <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin> {% endcomment %}
     {%- endunless -%}
 
     <title>
@@ -187,12 +190,14 @@
       *::before,
       *::after {
         box-sizing: inherit;
+        text-decoration: none;
       }
 
       html {
         box-sizing: border-box;
         font-size: calc(var(--font-body-scale) * 62.5%);
         height: 100%;
+        text-decoration: none;
       }
 
       body {
@@ -207,6 +212,11 @@
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
+        text-decoration: none;
+      }
+
+      button {
+        border: none;
       }
 
       @media screen and (min-width: 750px) {
@@ -219,10 +229,16 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+      {% comment %} <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin> {% endcomment %}
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+      {% comment %} <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin> {% endcomment %}
     {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}

@@ -1,7 +1,7 @@
 {
   "sections": {
     "hero": {
-      "type": "hero-cronometro",
+      "type": "home-meta-hero-banner",
       "settings": {
       }
     },
@@ -10,28 +10,18 @@
       "settings": {
       }
     },
-    "banner": {
-      "type": "home-meta-smart-banner",
-      "settings": {
-      }
-    },
-    "matress": {
-      "type": "home-meta-smart-mattress",
-      "settings": {
-      }
-    },
     "comparison": {
       "type": "home-meta-smart-comparison",
       "settings": {
       }
     },
-    "beding": {
-      "type": "home-meta-smart-beding",
+    "categories": {
+      "type": "home-meta-smart-grid-categories",
       "settings": {
       }
     },
-    "categories": {
-      "type": "smart-grid-categories",
+    "banner": {
+      "type": "home-meta-smart-banner",
       "settings": {
       }
     },
@@ -40,8 +30,13 @@
       "settings": {
       }
     },
-    "media": {
-      "type": "smart-product-text-media",
+    "matress": {
+      "type": "home-meta-smart-mattress",
+      "settings": {
+      }
+    },
+    "beding": {
+      "type": "home-meta-smart-beding",
       "settings": {
       }
     },
@@ -85,13 +80,12 @@
   "order": [
     "hero",
     "grid",
-    "banner",
-    "matress",
     "comparison",
-    "beding",
     "categories",
+    "banner",
     "video",
-    "media",
+    "matress",
+    "beding",
     "coupon",
     "blog",
     "about",

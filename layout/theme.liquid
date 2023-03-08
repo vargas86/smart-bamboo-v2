@@ -195,7 +195,9 @@
 
       html {
         box-sizing: border-box;
-        font-size: calc(var(--font-body-scale) * 62.5%);
+        /* font-size: calc(var(--font-body-scale) * 62.5%); */
+        font-size: 10px;
+        font-family: Poppins !important;
         height: 100%;
         text-decoration: none;
       }
@@ -221,12 +223,18 @@
 
       @media screen and (min-width: 750px) {
         body {
-          font-size: 1.6rem;
+          font-size: calc(var(--font-heading-scale) * 1.3rem);
         }
       }
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'smart-main-nav.css' | asset_url | stylesheet_tag }}
+    {{ 'smart-bamboo.css' | asset_url | stylesheet_tag }}
+    
+    {% if template != 'index' %}
+      <link rel="stylesheet" href="{{ 'theme.scss.css' | asset_url }}" media="print" onload="this.media='all'">
+    {% endif %}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -271,7 +279,8 @@
     {%- endif -%}
 
     {% section 'announcement-bar' %}
-    {% section 'header' %}
+    {% comment %} {% section 'header' %} {% endcomment %}
+    {% section 'smart-main-header' %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>

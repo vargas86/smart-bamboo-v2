@@ -10,11 +10,17 @@
       "settings": {
       }
     },
+    "video": {
+      "type": "home-meta-smart-video",
+      "settings": {
+      }
+    },
     "comparison": {
       "type": "home-meta-smart-comparison",
       "settings": {
       }
     },
+   
     "categories": {
       "type": "home-meta-smart-grid-categories",
       "settings": {
@@ -25,11 +31,7 @@
       "settings": {
       }
     },
-    "video": {
-      "type": "home-meta-smart-video",
-      "settings": {
-      }
-    },
+    
     "matress": {
       "type": "home-meta-smart-mattress",
       "settings": {
@@ -80,10 +82,10 @@
   "order": [
     "hero",
     "grid",
-    "comparison",
+    "video",
     "categories",
     "banner",
-    "video",
+    "comparison",
     "matress",
     "beding",
     "coupon",

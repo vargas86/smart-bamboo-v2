@@ -280,7 +280,10 @@
 
     {% section 'announcement-bar' %}
     {% comment %} {% section 'header' %} {% endcomment %}
-    {% section 'smart-main-header' %}
+    {% comment %} {% section 'smart-main-header' %} {% endcomment %}
+    <nav class="sticky-top">
+      {% section 'smart-main-header-nuevo' %}
+    </nav>
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>

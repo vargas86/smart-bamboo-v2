@@ -10,6 +10,11 @@
       "settings": {
       }
     },
+    "video": {
+      "type": "home-meta-smart-video",
+      "settings": {
+      }
+    },
     "comparison": {
       "type": "home-meta-smart-comparison",
       "settings": {
@@ -22,11 +27,6 @@
     },
     "banner": {
       "type": "home-meta-smart-banner",
-      "settings": {
-      }
-    },
-    "video": {
-      "type": "home-meta-smart-video",
       "settings": {
       }
     },
@@ -79,10 +79,10 @@
   "order": [
     "hero",
     "grid",
-    "comparison",
+    "video",
     "categories",
     "banner",
-    "video",
+    "comparison",
     "matress",
     "beding",
     "coupon",

@@ -1,15 +1,15 @@
 {
     "scripts": {
-      "css:dev": "npx tailwindcss -i ./frontend/styles.css -o ./snippets/styles.liquid --watch",
-      "css:prod": "npx tailwindcss -o ./snippets/styles.liquid --minify",
-      "js:dev": "npx babel ./frontend/scripts/*.js -d assets/ --watch --out-file-extension .min.js --verbose",
-      "js:prod": "npx babel ./frontend/scripts/*.js -d assets/ --out-file-extension .min.js --verbose --minified"
+        "css:dev": "npx tailwindcss -i ./frontend/styles.css -o ./snippets/styles.liquid --watch",
+        "css:prod": "npx tailwindcss -o ./snippets/styles.liquid --minify",
+        "js:dev": "npx babel ./frontend/scripts/*.js -d assets/ --watch --out-file-extension .min.js --verbose",
+        "js:prod": "npx babel ./frontend/scripts/*.js -d assets/ --out-file-extension .min.js --verbose --minified"
     },
     "devDependencies": {
-      "@babel/cli": "^7.19.3",
-      "@babel/core": "^7.20.5",
-      "@babel/preset-env": "^7.20.2",
-      "tailwindcss": "^3.2.4",
-      "terser": "^5.16.1"
+        "@babel/cli": "^7.6.4",
+        "@babel/core": "^7.20.5",
+        "@babel/preset-env": "^7.20.2",
+        "tailwindcss": "^3.2.4",
+        "terser": "^5.16.1"
     }
-  }
+}

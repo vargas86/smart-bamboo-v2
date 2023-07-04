@@ -65,7 +65,6 @@
         <div style="display:none;" id="NewVideoContentThree">{{ VideoThree }}</div>
         <div style="display:none;" id="NewVideoContentFour">{{ VideoFour }}</div>
         <div style="display:none;" id="NewVideoContentFive">{{ VideoFive }}</div>
-        {% comment %} <div style="display:none;" id="NewVideoContentStart">{{ VideoStart }}</div> {% endcomment %}
       </div>
 
       {% comment %} vídeos secundarios {% endcomment %}
@@ -89,10 +88,6 @@
           <button onclick="renderVideoTwo()" class="tw-w-full tw-rounded-lg tw-snap-start tw-h-[100px] tw-bg-[url('https://cdn.shopify.com/s/files/1/0248/4705/6932/files/SmartBamboo-Preview-Video-min.webp?v=1659899197')] tw-bg-no-repeat tw-bg-center tw-bg-cover">
           </button>
 
-          {% comment %} Video inicial {% endcomment %}
-          {% comment %} <button onclick="renderVideoStart()" class="tw-w-full tw-rounded-lg tw-snap-start tw-h-[100px] tw-bg-[url('https://cdn.shopify.com/s/files/1/0248/4705/6932/files/master-marzo_final-04-mobile.webp?v=1677614057')] md:tw-bg-[url('https://cdn.shopify.com/s/files/1/0248/4705/6932/files/portada-acumula-gana.webp?v=1678509674')] tw-bg-no-repeat tw-bg-center tw-bg-cover">
-          </button> {% endcomment %}
-
         </div> 
       </div>
     </div>
@@ -100,5 +95,40 @@
   </div>
 </section>
 
-<script src="{{ 'smart-home.js' | asset_url }}" defer></script>
-
+<script>
+  function defaultContentVideoHome() {
+    document.getElementById('defaultContentVideoHome').style.display = 'block';
+  }
+  
+  function renderVideoTwo() {
+    document.getElementById('defaultContentVideoHome').style.display = 'none';
+    document.getElementById('NewVideoContentThree').style.display = 'none';
+    document.getElementById('NewVideoContentFour').style.display = 'none';
+    document.getElementById('NewVideoContentFive').style.display = 'none';
+    document.getElementById('NewVideoContentTwo').style.display = 'block';
+  }
+  
+  function renderVideoThree() {
+    document.getElementById('defaultContentVideoHome').style.display = 'none';
+    document.getElementById('NewVideoContentTwo').style.display = 'none';
+    document.getElementById('NewVideoContentFour').style.display = 'none';
+    document.getElementById('NewVideoContentFive').style.display = 'none';
+    document.getElementById('NewVideoContentThree').style.display = 'block';
+  }
+  
+  function renderVideoFour() {
+    document.getElementById('defaultContentVideoHome').style.display = 'none';
+    document.getElementById('NewVideoContentTwo').style.display = 'none';
+    document.getElementById('NewVideoContentThree').style.display = 'none';
+    document.getElementById('NewVideoContentFive').style.display = 'none';
+    document.getElementById('NewVideoContentFour').style.display = 'block';
+  }
+  
+  function renderVideoFive() {
+    document.getElementById('defaultContentVideoHome').style.display = 'none';
+    document.getElementById('NewVideoContentTwo').style.display = 'none';
+    document.getElementById('NewVideoContentThree').style.display = 'none';
+    document.getElementById('NewVideoContentFour').style.display = 'none';
+    document.getElementById('NewVideoContentFive').style.display = 'block';
+  }
+</script>

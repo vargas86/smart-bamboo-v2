@@ -40,6 +40,11 @@
       "settings": {
       }
     },
+    "moreSell": {
+      "type": "home-meta-smart-more-sell",
+      "settings": {
+      }
+    },
     "about": {
       "type": "home-meta-smart-about",
       "settings": {
@@ -55,6 +60,7 @@
     "comparison",
     "coupon",
     "imagesProducts",
+    "moreSell",
     "about"
   ]
 }

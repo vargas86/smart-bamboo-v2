@@ -12,6 +12,9 @@
         },
         "title": {
           "type": "title",
+          "settings": {
+          }
+        },
         "caption": {
           "type": "text",
           "settings": {
@@ -25,10 +28,7 @@
           }
         },
         "variant_picker": {
-          "type":
-          "settings": {
-          }
-        }, "variant_picker",
+          "type": "variant_picker",
           "settings": {
             "picker_type": "button"
           }

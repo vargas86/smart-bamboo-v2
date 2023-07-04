@@ -126,7 +126,6 @@
             "type": "announcement",
             "settings": {
               "text": "Welcome to our store",
-              "text_alignment": "center",
               "color_scheme": "background-1",
               "link": ""
             }
@@ -205,18 +204,8 @@
         "settings": {
           "color_scheme": "background-1"
         }
-      },
-      "smart-main-header-nuevo": {
-        "type": "smart-main-header-nuevo",
-        "settings": {
-          "menu": "menu-2023",
-          "newsletter_title": ""
-        }
       }
-    },
-    "content_for_index": [
-
-    ]
+    }
   },
   "presets": {
     "Default": {

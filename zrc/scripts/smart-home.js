@@ -79,56 +79,6 @@ function comparadorContainer() {
     document.getElementById('balanceUl').style.display = 'none';
   }
   
-  //GRID VIDEOS
-  function defaultContentVideoHome() {
-  document.getElementById('defaultContentVideoHome').style.display = 'block';
-  }
-  
-  function renderVideoTwo() {
-  document.getElementById('defaultContentVideoHome').style.display = 'none';
-  document.getElementById('NewVideoContentThree').style.display = 'none';
-  document.getElementById('NewVideoContentFour').style.display = 'none';
-  document.getElementById('NewVideoContentFive').style.display = 'none';
-  document.getElementById('NewVideoContentStart').style.display = 'none';
-  document.getElementById('NewVideoContentTwo').style.display = 'block';
-  }
-  
-  function renderVideoThree() {
-  document.getElementById('defaultContentVideoHome').style.display = 'none';
-  document.getElementById('NewVideoContentTwo').style.display = 'none';
-  document.getElementById('NewVideoContentFour').style.display = 'none';
-  document.getElementById('NewVideoContentFive').style.display = 'none';
-  document.getElementById('NewVideoContentStart').style.display = 'none';
-  document.getElementById('NewVideoContentThree').style.display = 'block';
-  }
-  
-  function renderVideoFour() {
-  document.getElementById('defaultContentVideoHome').style.display = 'none';
-  document.getElementById('NewVideoContentTwo').style.display = 'none';
-  document.getElementById('NewVideoContentThree').style.display = 'none';
-  document.getElementById('NewVideoContentFive').style.display = 'none';
-  document.getElementById('NewVideoContentStart').style.display = 'none';
-  document.getElementById('NewVideoContentFour').style.display = 'block';
-  }
-  
-  function renderVideoFive() {
-  document.getElementById('defaultContentVideoHome').style.display = 'none';
-  document.getElementById('NewVideoContentTwo').style.display = 'none';
-  document.getElementById('NewVideoContentThree').style.display = 'none';
-  document.getElementById('NewVideoContentFour').style.display = 'none';
-  document.getElementById('NewVideoContentStart').style.display = 'none';
-  document.getElementById('NewVideoContentFive').style.display = 'block';
-  }
-  
-  function renderVideoStart() {
-  document.getElementById('defaultContentVideoHome').style.display = 'none';
-  document.getElementById('NewVideoContentTwo').style.display = 'none';
-  document.getElementById('NewVideoContentThree').style.display = 'none';
-  document.getElementById('NewVideoContentFour').style.display = 'none';
-  document.getElementById('NewVideoContentFive').style.display = 'none';
-  document.getElementById('NewVideoContentStart').style.display = 'block';
-  }
-  
   //LO MAS
     function renderNewProducts() {
         document.getElementById('MostSellerContent').style.display = 'none';

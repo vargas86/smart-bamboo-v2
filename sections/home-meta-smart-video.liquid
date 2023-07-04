@@ -1,29 +1,38 @@
 
- {% capture VideoOne %}
+{% capture VideoOne %}
   {% comment %} {% render 'smart-snippet-video-one' %}  {% endcomment %}
   {% assign urlPortadaOne = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/SmartBamboo-Preview-Video-min.webp?v=1659899197"  %}
   {% assign urlVideoOne =  "https://cdn.shopify.com/videos/c/o/v/12a506280c8041c4a76c47e4989febff.mp4" %}
- {% render 'smart-snippet-video-for-home', posterVideoOne: urlPortadaOne, videoVideoOne: urlVideoOne %} 
- {% endcapture %}
+  {% render 'smart-snippet-video-for-home', posterVideoOne: urlPortadaOne, videoVideoOne: urlVideoOne %} 
+{% endcapture %}
 
 
 {% capture VideoTwo %}
 {% comment %} {% render 'smart-snippet-video-two' %}  {% endcomment %}
-{% assign urlPortadaTwo = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/SmartBamboo-Preview-Video-min.webp?v=1659899197"  %}
-{% assign urlVideoTwo =  "https://cdn.shopify.com/videos/c/o/v/12a506280c8041c4a76c47e4989febff.mp4" %}
- {% render 'smart-snippet-video-two', posterVideoTwo: urlPortadaTwo, videoVideoTwo: urlVideoTwo %} 
+  {% assign urlPortadaTwo = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/SmartBamboo-Preview-Video-min.webp?v=1659899197"  %}
+  {% assign urlVideoTwo =  "https://cdn.shopify.com/videos/c/o/v/12a506280c8041c4a76c47e4989febff.mp4" %}
+  {% render 'smart-snippet-video-two', posterVideoTwo: urlPortadaTwo, videoVideoTwo: urlVideoTwo %} 
 {% endcapture %}
 
 {% capture VideoThree %}
- {% render 'smart-snippet-video-three' %} 
+  {% comment %} {% render 'smart-snippet-video-three' %}  {% endcomment %}
+  {% assign urlPortadaThree = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Portada-NanoCool-Home_1.webp?v=1676391074"  %}
+  {% assign urlVideoThree =  "https://cdn.shopify.com/videos/c/o/v/8cb22a6477f7444b8d673bfc6ee95916.mp4" %}
+  {% render 'smart-snippet-video-three', posterVideoThree: urlPortadaThree, videoVideoThree: urlVideoThree %} 
 {% endcapture %}
 
 {% capture VideoFour %}
- {% render 'smart-snippet-video-four' %} 
+  {% comment %} {% render 'smart-snippet-video-four' %}  {% endcomment %}
+  {% assign urlPortadaFour = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Portada-Pijama-Home_1.webp?v=1676391079"  %}
+  {% assign urlVideoFour =  "https://cdn.shopify.com/videos/c/o/v/0d3b9979b0b44aaba755ed66283f7ccd.mp4" %}
+  {% render 'smart-snippet-video-four', posterVideoFour: urlPortadaFour, videoVideoFour: urlVideoFour %} 
 {% endcapture %}
 
 {% capture VideoFive %}
- {% render 'smart-snippet-video-five' %} 
+  {% comment %} {% render 'smart-snippet-video-five' %}  {% endcomment %}
+  {% assign urlPortadaFive = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Portada-Pijama-Home_1.webp?v=1676391079"  %}
+  {% assign urlVideoFive =  "https://cdn.shopify.com/videos/c/o/v/0d3b9979b0b44aaba755ed66283f7ccd.mp4" %}
+  {% render 'smart-snippet-video-five', posterVideoFive: urlPortadaFive, videoVideoFive: urlVideoFive  %} 
 {% endcapture %}
 
 

@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-meta-hero-banner",
+      "settings": {
+      }
+    },
+    "grid": {
+      "type": "home-meta-smart-grid",
+      "settings": {
+      }
+    },
+    "video": {
+      "type": "home-meta-smart-video",
+      "settings": {
+      }
+    },
+    "comparison": {
+      "type": "home-meta-smart-comparison",
+      "settings": {
+      }
+    },
+    "categories": {
+      "type": "smart-new-grid-products-cols-tres",
+      "settings": {
+      }
+    },
+    "banner": {
+      "type": "home-meta-smart-banner",
+      "settings": {
+      }
+    },
+    "coupon": {
+      "type": "home-meta-smart-coupon",
+      "settings": {
+      }
+    },
+    "imagesProducts": {
+      "type": "home-meta-smart-images-products",
+      "settings": {
+      }
+    },
+    "moreSell": {
+      "type": "home-meta-smart-more-sell",
+      "settings": {
+      }
+    },
+    "about": {
+      "type": "home-meta-smart-about",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "grid",
+    "video",
+    "categories",
+    "banner",
+    "comparison",
+    "coupon",
+    "imagesProducts",
+    "moreSell",
+    "about"
+  ]
+}

@@ -33,6 +33,7 @@
   {% assign urlPortadaFive = "https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Portada-Bliss.webp?v=1676391082"  %}
   {% assign urlVideoFive =  "https://cdn.shopify.com/videos/c/o/v/db924920029e49cb8574a2bb6770b23e.mp4" %}
   {% render 'smart-snippet-video-for-home', posterVideo: urlPortadaFive, videoVideo: urlVideoFive %}  
+
 {% endcapture %}
 
 
@@ -66,13 +67,13 @@
         <div style="display:none;" id="NewVideoContentFour">{{ VideoFour }}</div>
         <div style="display:none;" id="NewVideoContentFive">{{ VideoFive }}</div>
         {% comment %} <div style="display:none;" id="NewVideoContentStart">{{ VideoStart }}</div> {% endcomment %}
+
       </div>
 
       {% comment %} vídeos secundarios {% endcomment %}
       <div class="tw-grid tw-col-span-12 xl:tw-col-span-2 lg:tw-max-h-[350px] tw-overflow-auto">
 
         <div class="tw-grid tw-grid-cols-4 xl:tw-grid-cols-1 tw-gap-3 tw-py-2 xl:tw-px-6 tw-overflow-x-visible xl:tw-overflow-y-visible">
-          
           {% comment %} Video 3 {% endcomment %}
           <button onclick="renderVideoThree()" class="tw-w-full tw-rounded-lg tw-snap-start tw-h-[100px] tw-bg-[url('https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Portada-NanoCool-Home_1.webp?v=1676391074')] tw-bg-no-repeat tw-bg-center tw-bg-cover">
           </button>
@@ -101,3 +102,4 @@
 </section>
 
 <script src="{{ 'smart-home.js' | asset_url }}" defer></script>
+

@@ -29,12 +29,7 @@
     <div class="product-textoption__container main-grid-product responsive-gap align-items-center d-grid {{ section.settings.position }} {% if section.settings.is_ordered %}isOrdered{% endif %}">
       <div class="left product-textoption__header position-relative tw-hidden md:tw-block">
         <picture class="">
-          <source srcset="{{ section.settings.image | img_url: '760x' }}" media="(min-width: 1200px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
-          <source srcset="{{ section.settings.image | img_url: '1200x' }}" media="(min-width: 992px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
-          <source srcset="{{ section.settings.image | img_url: '992x' }}" media="(min-width: 768px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
-          <source srcset="{{ section.settings.image | img_url: '768x' }}" media="(min-width: 576px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
-          <source srcset="{{ section.settings.image | img_url: '576x' }}" media="(min-width: 360px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
-          <source srcset="{{ section.settings.image | img_url: '360x' }}" media="(min-width: 320px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
+          <img src="{{ section.settings.image | img_url: '760x' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
         </picture>
       </div>
       <div class="right product-textoption__body responsive-padding">
@@ -63,7 +58,7 @@
                   {% case block.type %}
                     {% when 'image' %}
                       <open-modal open="modal-carousel__{{forloop.index}}" class="cursor-pointer d-block product-textvideo-grid__body position-relative br-4 c1-bk">
-                        <img class="image-height w-100 h-100 object-cover" data-src="{{ block.settings.image | img_url: '320x' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
+                        <img class="image-height w-100 h-100 object-cover" src="{{ block.settings.image | img_url: '320x' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
                       </open-modal>
                     {% when 'video' %}
                       <open-modal open="modal-carousel__{{forloop.index}}" class="cursor-pointer d-block product-textvideo-grid__body position-relative br-4 c1-bk">
@@ -95,7 +90,7 @@
                           <button class="modal-button position-absolute left" onClick="previous({{forloop.index}}, {{section.blocks.size}})">{% render 'smart-icon-arrow-left' %}</button>
                           <button class="modal-button position-absolute right" onClick="next({{forloop.index}}, {{section.blocks.size}})">{% render 'smart-icon-arrow-right' %}</button>
                         </div>
-                        <img class="object-contain d-block" style="max-width: 95%;" ssrc="{{ block.settings.image | img_url: 'master' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
+                        <img class="object-contain d-block" style="max-width: 95%;" src="{{ block.settings.image | img_url: 'master' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
                       </div>
                       <div class="mx-auto margin-top-1" style="max-width: 250px;">
                         <button class="general-button big c8-c body-text fs-18-20 fw-semibold c1-bk" close="">Cerrar</button>
@@ -131,7 +126,45 @@
   </div>
 </div>
 </section>
-<script src="{{ 'smart-product-text-media.js' | asset_url }}" defer></script>
+
+{% comment %} <script src="{{ 'smart-product-text-media.js' | asset_url }}" defer></script> {% endcomment %}
+
+<script>
+  function next(index, lenght) {
+    let nextIndex = index+1
+    if(index == lenght) {
+      nextIndex = 1
+    }
+    let next = document.querySelector(`.modal-container[index="${nextIndex}"] main-modal`)
+    let modal = document.querySelector(`.modal-container[index="${index}"] main-modal`)
+    modal.close()
+    next.open()
+  }
+  
+  function previous(index, lenght) {
+    let previousIndex = index-1
+    if(index == 1) {
+      previousIndex = lenght
+    }
+    let previous = document.querySelector(`.modal-container[index="${previousIndex}"] main-modal`)
+    let modal = document.querySelector(`.modal-container[index="${index}"] main-modal`)
+    modal.close()
+    previous.open()
+  }
+  
+  $('.product-textvideo-grid__container').slick({
+    dots: true,
+    speed: 300,
+    slidesToShow: 1,
+    variableWidth: true,
+    arrows: false,
+    swipeToSlide: true,
+    edgeFriction: 0,
+    infinite: true,
+  });
+</script>
+
+
 
 {% schema %}
 {

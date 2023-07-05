@@ -15,11 +15,6 @@
       "settings": {
       }
     },
-    "comparison": {
-      "type": "home-meta-smart-comparison",
-      "settings": {
-      }
-    },
     "categories": {
       "type": "smart-new-grid-products-cols-tres",
       "settings": {
@@ -30,6 +25,11 @@
       "settings": {
       }
     },
+    "comparison": {
+      "type": "home-meta-smart-comparison",
+      "settings": {
+      }
+    },
     "coupon": {
       "type": "home-meta-smart-coupon",
       "settings": {
@@ -37,7 +37,42 @@
     },
     "imagesProducts": {
       "type": "home-meta-smart-images-products",
+      "disabled": true,
+      "blocks": {
+        "c964330f-5044-4663-a545-302c657aea26": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Smart-Bamboo-Review-01-min_a5daeb42-8fe4-4e17-8c65-a4f2ce891042.webp"
+          }
+        },
+        "114fe31f-c482-432a-95c4-f6132904a063": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Smart-Bamboo-Review-02-min_c1cea485-b81a-4b76-b335-a5d3578aaa28.webp"
+          }
+        },
+        "3f2d5f75-d95c-4bfd-a2f5-be5d27b3a055": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Smart-Bamboo-Review-03-min_9092d87e-df6e-4fc7-aaea-cc6f74162c24.webp"
+          }
+        }
+      },
+      "block_order": [
+        "c964330f-5044-4663-a545-302c657aea26",
+        "114fe31f-c482-432a-95c4-f6132904a063",
+        "3f2d5f75-d95c-4bfd-a2f5-be5d27b3a055"
+      ],
       "settings": {
+        "is_border": false,
+        "background": "",
+        "is_ordered": false,
+        "position": "right",
+        "image": "shopify:\/\/shop_images\/Review-principal-banner-min_760x_c5527631-1456-449d-88c4-49dee9f7f603.webp",
+        "main_title": "",
+        "secondary_title": "¡Miles de mexicanos ya duermen mejor con Smart Bamboo!",
+        "secondary_subtitle": "Comunidad Smart Bamboo",
+        "secondary_text": "<p>Todos ellos tienen algo en común… Y ¡es que ahora duermen mejor que nunca! Descubre lo que nuestros clientes opinan de los productos Smart Bamboo. <br\/><br\/><strong>¡Qué esperas para unirte a esta gran familia!<\/strong><\/p>"
       }
     },
     "moreSell": {

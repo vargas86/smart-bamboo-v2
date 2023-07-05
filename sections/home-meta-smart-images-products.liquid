@@ -28,7 +28,7 @@
   <div class="general-container__container">
     <div class="product-textoption__container main-grid-product responsive-gap align-items-center d-grid {{ section.settings.position }} {% if section.settings.is_ordered %}isOrdered{% endif %}">
       <div class="left product-textoption__header position-relative tw-hidden md:tw-block">
-        <picture class="lozad">
+        <picture class="">
           <source srcset="{{ section.settings.image | img_url: '760x' }}" media="(min-width: 1200px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
           <source srcset="{{ section.settings.image | img_url: '1200x' }}" media="(min-width: 992px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
           <source srcset="{{ section.settings.image | img_url: '992x' }}" media="(min-width: 768px)" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
@@ -63,7 +63,7 @@
                   {% case block.type %}
                     {% when 'image' %}
                       <open-modal open="modal-carousel__{{forloop.index}}" class="cursor-pointer d-block product-textvideo-grid__body position-relative br-4 c1-bk">
-                        <img class="image-height w-100 h-100 object-cover lozad" data-src="{{ block.settings.image | img_url: '320x' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
+                        <img class="image-height w-100 h-100 object-cover" data-src="{{ block.settings.image | img_url: '320x' }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
                       </open-modal>
                     {% when 'video' %}
                       <open-modal open="modal-carousel__{{forloop.index}}" class="cursor-pointer d-block product-textvideo-grid__body position-relative br-4 c1-bk">
@@ -72,9 +72,9 @@
                         </div>
                         {% if block.settings.image == blank %}
                           {% if block.settings.video.type == 'youtube' %}
-                            <img class="object-cover w-100 h-100 lozad" data-src="https://img.youtube.com/vi/{{block.settings.video.id}}/0.jpg" alt="Smart Bamboo Youtube">
+                            <img class="object-cover w-100 h-100" data-src="https://img.youtube.com/vi/{{block.settings.video.id}}/0.jpg" alt="Smart Bamboo Youtube">
                           {% elsif block.settings.video.type == 'vimeo' %}
-                            <img class="object-cover w-100 h-100 lozad" data-src="https://vumbnail.com/{{block.settings.video.id}}.jpg" alt="Smart Bamboo">
+                            <img class="object-cover w-100 h-100" data-src="https://vumbnail.com/{{block.settings.video.id}}.jpg" alt="Smart Bamboo">
                           {% endif %}
                         {% else %}
                           <img class="object-cover d-block w-100 h-100 tw-transition-opacity tw-delay-700 tw-duration-1000" data-src="{{ block.settings.image | img_url: "320x" }}" alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">

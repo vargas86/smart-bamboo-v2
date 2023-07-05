@@ -40,3 +40,24 @@
 
     </div>
 </section>
+
+
+<script>
+    function renderNewProducts() {
+        document.getElementById('MostSellerContent').style.display = 'none';
+        document.getElementById('ProductBlogsContent').style.display = 'none'; 
+        document.getElementById('NewProductsContent').style.display = 'block';
+    }
+  
+    function renderProductBlog() {
+        document.getElementById('NewProductsContent').style.display = 'none';
+        document.getElementById('MostSellerContent').style.display = 'none';
+        document.getElementById('ProductBlogsContent').style.display = 'block';
+    }
+  
+    function renderMostSeller() {
+        document.getElementById('NewProductsContent').style.display = 'none';
+        document.getElementById('ProductBlogsContent').style.display = 'none';
+        document.getElementById('MostSellerContent').style.display = 'block';
+    }
+</script>

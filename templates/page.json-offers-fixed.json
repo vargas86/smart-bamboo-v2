@@ -1,7 +1,7 @@
 {
     "sections": {
       "hero": {
-        "type": "smart-offers-hero-banner",
+        "type": "smart-hero-banner-home-offers",
         "settings": {
         }
       },

@@ -192,7 +192,7 @@
         }
       },
       "faqs": {
-        "type": "faq-smart-collection",
+        "type": "faq-smart-mattress-colection",
         "blocks": {
           "9d126470-768b-431b-a207-0b18706e29aa": {
             "type": "faqSection",

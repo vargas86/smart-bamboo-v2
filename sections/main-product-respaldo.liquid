@@ -79,15 +79,12 @@
               </p>
             {%- when 'title' -%}
               <div class="product__title" {{ block.shopify_attributes }}>
-                <h1 class="tw-font-lora tw-text-[#434f5a] tw-text-4xl tw-font-semibold tw-tracking-normal tw-my-5">
-                  {{ product.title | escape }}
-                </h1>
+                <h1>{{ product.title | escape }}</h1>
                 <a href="{{ product.url }}" class="product__title">
                   <h2 class="h1">
                     {{ product.title | escape }}
                   </h2>
                 </a>
-                <p>aqui van las estrellas de yotpo</p>
               </div>
             {%- when 'price' -%}
               <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
@@ -97,8 +94,6 @@
                   show_badges: true,
                   price_class: 'price--large'
                 -%}
-                <p>leyende de meses "Paga hasta 24 meses sin tarjeta de crédito con"</p>
-                <p>Aqui poner "INCLUYE"</p>
               </div>
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                 <div class="product__tax caption rte">
@@ -480,9 +475,6 @@
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
-        {% comment %} Pleca con beneficios por producto: 365 NOCHES DE PRUEBA | ENVÍO GRATIS | 12 AÑOS DE GARANTÍA {% endcomment %}
-        {% render 'product-benefits' %}
-        <p>VAS A CREAR UN SNIPPET DEL INTERACTIVO</p>
       </div>
     </div>
     {%- if section.settings.media_position == 'right' -%}

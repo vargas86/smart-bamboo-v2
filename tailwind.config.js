@@ -19,7 +19,13 @@ module.exports = {
     './templates/*.liquid'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'serif': ['Castoro'],
+        'poppins': ['Poppins'],
+        'lora': ['Lora'],
+      }
+    }, 
   },
   plugins: [],
 }

@@ -24,7 +24,7 @@
 {%- endunless -%}
 
 <cart-items class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
-  <div class="title-wrapper-with-link">
+  <div class="tw-text-center tw-mt-20 tw-mb-12 tw-items-center tw-flex tw-justify-between tw-gap-4 tw-flex-wrap">
     <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
     <a href="{{ routes.all_products_collection_url }}" class="underlined-link">{{ 'general.continue_shopping' | t }}</a>
   </div>

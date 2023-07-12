@@ -25,11 +25,11 @@
 
 <cart-items class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="tw-text-center tw-mt-20 tw-mb-12 tw-items-center tw-flex tw-justify-between tw-gap-4 tw-flex-wrap">
-    <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
+    <h1 class="mt-8 ml-0 mb-8 mr-0">{{ 'sections.cart.title' | t }}</h1>
     <a href="{{ routes.all_products_collection_url }}" class="underlined-link">{{ 'general.continue_shopping' | t }}</a>
   </div>
 
-  <div class="cart__warnings">
+  <div class="cart__warnings pt-24 pl-0 pb-4 pr-0 hidden text-center">
     <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
     <a href="{{ routes.all_products_collection_url }}" class="button">
       {{ 'general.continue_shopping' | t }}
@@ -44,14 +44,14 @@
   </div>
 
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
-    <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
+    <div class="cart__items tw-col-start-1 tw-pb-16" id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
         {%- if cart != empty -%}
-          <table class="cart-items">
-            <caption class="visually-hidden">{{ 'sections.cart.title' | t }}</caption>
+          <table class="cart-items tw-shadow-none tw-w-full tw-table tw-border-spacing-0 tw-border-separate">
+            <caption class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw--m-px tw-p-0 tw-border-0 tw-break-normal">{{ 'sections.cart.title' | t }}</caption>
             <thead>
               <tr>
-                <th class="caption-with-letter-spacing" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
+                <th class="caption-with-letter-spacing first:tw-w-3/5 tw-uppercase tw-text-left tw-pb-8 tw-font-normal tw-p-0 tw-opacity-80 tw-border-0" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
                 <th class="medium-hide large-up-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
                 <th class="cart-items__heading--wide small-hide caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.quantity' | t }}</th>
                 <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>

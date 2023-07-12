@@ -482,7 +482,8 @@
         </a>
         {% comment %} Pleca con beneficios por producto: 365 NOCHES DE PRUEBA | ENVÍO GRATIS | 12 AÑOS DE GARANTÍA {% endcomment %}
         {% render 'product-benefits' %}
-        <p>VAS A CREAR UN SNIPPET DEL INTERACTIVO</p>
+        {% comment %} Interactivo: Descripción | Medidas | Garantía | Envío {% endcomment %}
+        {% render 'main-interactive-product-page' %}
       </div>
     </div>
     {%- if section.settings.media_position == 'right' -%}

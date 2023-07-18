@@ -3,9 +3,9 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
-<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+<div class="page-width{% if cart == empty %} is-empty{% endif %} tw-max-w-[120rem] tw-mx-auto tw-my-0 sm:tw-px-20 tw-px-6 tw-py-0" id="main-cart-footer" data-id="{{ section.id }}">
   <div>
-    <div class="cart__footer">
+    <div class="cart__footer md:tw-flex md:tw-justify-between md:tw-border-0 tw-pt-16 tw-pb-0 tw-px-0;">
       {%- if settings.show_cart_note -%}
         <cart-note class="cart__note field">
           <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
@@ -13,7 +13,7 @@
         </cart-note>
       {%- endif -%}
 
-      <div class="cart__blocks">
+      <div class="cart__blocks tw-ml-auto md:tw-w-[35rem]">
         {% for block in section.blocks %}
           {%- case block.type -%}
             {%- when '@app' -%}
@@ -52,7 +52,7 @@
                 </small>
               </div>
             {%- else -%}
-              <div class="cart__ctas" {{ block.shopify_attributes }}>
+              <div class="cart__ctas" {{ block.shopify_attributes }}  tw-flex tw-gap-4 tw-text-center tw-mt-4>
                 <noscript>
                   <button type="submit" class="cart__update-button button button--secondary" form="cart">
                     {{ 'sections.cart.update' | t }}
@@ -65,14 +65,14 @@
               </div>
 
               {%- if additional_checkout_buttons -%}
-                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons tw-max-w-xl tw-mx-auto tw-my-0">
                   {{ content_for_additional_checkout_buttons }}
                 </div>
               {%- endif -%}
           {%- endcase -%}
         {% endfor %}
 
-        <div id="cart-errors"></div>
+        <div id="cart-errors tw-hidden tw-mt-4"></div>
       </div>
     </div>
   </div>

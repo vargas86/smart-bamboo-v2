@@ -177,7 +177,7 @@
                           <dt class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
-                          <dd class="price price--end">
+                          <dd class="price price--end tw-block tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-[1.05] tw-text-[rgb(18,18,18)] tw-text-right tw-m-0 tw-p-0">
                             {{ item.final_line_price | money }}
                           </dd>
                         </dl>
@@ -280,12 +280,12 @@
                           <dt class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
-                          <dd class="price price--end md:tw-mt-4 md:tw-mb-0 tw-text-right tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-normal tw-text-[rgb(18,18,18)] tw-block tw-m-0 tw-p-0">
+                          <dd class="price price--end md:tw-mt-4 md:tw-mb-0 tw-text-right tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-normal tw-text-[rgb(18,18,18)] tw-block tw-m-0 tw-p-0 md:tw-mt-4 md:tw-mb-0">
                             {{ item.final_line_price | money }}
                           </dd>
                         </dl>
                       {%- else -%}
-                        <span class="price price--end">
+                        <span class="price price--end md:tw-mt-4 md:tw-mb-0 tw-text-right tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-normal tw-text-[rgb(18,18,18)] tw-block tw-m-0 tw-p-0 md:tw-mt-4 md:tw-mb-0">
                           {{ item.original_line_price | money }}
                         </span>
                       {%- endif -%}
@@ -312,8 +312,8 @@
       </div>
     </div>
 
-    <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
-    <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+    <p class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw-hidden tw--m-px tw-p-0 tw-border-0 md:tw-mt-0" id="cart-live-region-text" aria-live="polite" role="status"></p>
+    <p class="visually-hidden visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw-hidden tw--m-px tw-p-0 tw-border-0 md:tw-mt-0" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
   </form>
 </cart-items>
 

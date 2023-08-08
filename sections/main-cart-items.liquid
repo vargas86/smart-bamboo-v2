@@ -24,50 +24,51 @@
 {%- endunless -%}
 
 <cart-items class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
-  <div class="title-wrapper-with-link">
-    <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
-    <a href="{{ routes.all_products_collection_url }}" class="underlined-link">{{ 'general.continue_shopping' | t }}</a>
+  <div class="tw-text-center tw-mt-20 tw-mb-12 tw-items-center tw-flex tw-justify-between tw-gap-4 tw-flex-wrap">
+    <h1 class="mt-8 ml-0 mb-8 mr-0">{{ 'sections.cart.title' | t }}</h1>
+    <a href="{{ routes.all_products_collection_url }}" class="underlined-link tw-text-[#0C0C0C]">{{ 'general.continue_shopping' | t }}</a>
   </div>
 
-  <div class="cart__warnings">
-    <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
-    <a href="{{ routes.all_products_collection_url }}" class="button">
+  <div class="cart__warnings tw-pt-24 tw-pl-0 tw-pb-4 tw-pr-0 tw-hidden tw-text-center">
+    <h1 class="cart__empty-text tw-mt-0 tw-mb-12 tw-hidden">{{ 'sections.cart.empty' | t }}</h1>
+    <a href="{{ routes.all_products_collection_url }}" class="button tw-text-2xl tw-tracking-[0.1rem] tw-leading-[calc(1_+_0.2_/_var(--font-body-scale))] tw-inline-flex tw-justify-center tw-items-center tw-cursor-pointer tw-text-2xl tw-no-underline tw-text-[#FFF] tw-transition-shadow tw-duration-[100ms] tw-ease-[ease] tw-appearance-none tw-bg-[#121201] tw-px-12 tw-py-0 tw-border-0;
+      ">
       {{ 'general.continue_shopping' | t }}
     </a>
 
     {%- if shop.customer_accounts_enabled and customer == nil -%}
-      <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
-      <p class="cart__login-paragraph">
+      <h2 class="cart__login-title tw-text-[2.4rem] tw-mt-[5.5rem] tw-mb-2 tw-mx-0;">{{ 'sections.cart.login.title' | t }}</h2>
+      <p class="cart__login-paragraph tw-mt-[0.8rem]">
         {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
       </p>
     {%- endif -%}
   </div>
 
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
-    <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
+    <div class="cart__items tw-col-start-1 tw-pb-16 tw-relative tw-col-start-1 tw-pb-16 tw-border-b-[0.1rem] tw-border-b-[rgba(18,18,18,0.08)]" id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
         {%- if cart != empty -%}
-          <table class="cart-items">
-            <caption class="visually-hidden">{{ 'sections.cart.title' | t }}</caption>
+          <table class="cart-items tw-shadow-none tw-w-full tw-table tw-border-spacing-0 tw-border-separate">
+            <caption class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw--m-px tw-p-0 tw-border-0 tw-break-normal">{{ 'sections.cart.title' | t }}</caption>
             <thead>
               <tr>
-                <th class="caption-with-letter-spacing" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
-                <th class="medium-hide large-up-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
-                <th class="cart-items__heading--wide small-hide caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.quantity' | t }}</th>
-                <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
+                <th class="caption-with-letter-spacing first:tw-w-3/5 tw-uppercase tw-text-left tw-pb-8 tw-font-normal tw-p-0 tw-opacity-80 tw-border-0" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
+                <th class="medium-hide large-up-hide right caption-with-letter-spacing tw-text-right tw-uppercase tw-border-b-[rgba(18,18,18,0.08)] tw-opacity-[0.85] tw-font-[normal] tw-text-base tw-tracking-[0.13rem] tw-leading-[calc(1_+_0.2_/_1)] tw-pl-16 tw-pb-[1.8rem] tw-p-0 tw-border-b-[0.1rem] tw-border-[none]" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
+                <th class="cart-items__heading--wide small-hide caption-with-letter-spacing  tw-uppercase tw-text-left tw-opacity-[0.85] tw-font-[normal] tw-text-base tw-tracking-[0.13rem] tw-leading-[calc(1_+_0.2_/_1)] tw-pl-24 tw-pb-[1.8rem] tw-p-0 tw-border-b-[0.1rem] tw-border-b-[rgba(18,18,18,0.08)] tw-border-[none]" colspan="1" scope="col">{{ 'sections.cart.headings.quantity' | t }}</th>
+                <th class="small-hide right caption-with-letter-spacing tw-text-right tw-uppercase tw-opacity-[0.85] tw-font-[normal] tw-text-base tw-tracking-[0.13rem] tw-leading-[calc(1_+_0.2_/_1)] tw-pl-16 tw-pb-[1.8rem] tw-p-0 tw-border-b-[0.1rem] tw-border-b-[rgba(18,18,18,0.08)] tw-border-[none]" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
               </tr>
             </thead>
 
             <tbody>
               {%- for item in cart.items -%}
-                <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
-                  <td class="cart-item__media">
+                <tr class="cart-item tw-table-row" id="CartItem-{{ item.index | plus: 1 }}">
+                  <td class="cart-item__media tw-align-top tw-w-40 tw-relative tw-pt-16 tw-pb-0 tw-px-0 tw-border-[none]">
                     {% if item.image %}
                       {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
-                      <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
-                        <div class="cart-item__image-container gradient global-media-settings">
+                      <a href="{{ item.url }}" class="cart-item__link tw-block tw-absolute tw-w-full tw-h-full tw-inset-0;" aria-hidden="true" tabindex="-1"> </a>
+                        <div class="cart-item__image-container gradient global-media-settings tw-inline-flex tw-items-start tw-relative tw-border tw-overflow-visible tw-bg-white tw-bg-fixed tw-rounded-none tw-border-solid tw-border-[rgba(18,18,18,0.05)]">
                           <img src="{{ item.image | image_url: width: 300 }}"
-                            class="cart-item__image"
+                            class="cart-item__image tw-rounded-[calc(0_-_1px)] tw-max-w-full tw-h-auto"
                             alt="{{ item.image.alt | escape }}"
                             loading="lazy"
                             width="150"
@@ -77,12 +78,12 @@
                     {% endif %}
                   </td>
 
-                  <td class="cart-item__details">
+                  <td class="cart-item__details tw-text-[1.6rem] tw-leading-[1.04] tw-pt-16 tw-pl-16 tw-py-0 tw-border-[none] md:tw-align-top md:tw-pt-16 md:tw-w-[35rem] lg:tw-w-[50rem]">
                     {%- if settings.show_vendor -%}
                       <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                     {%- endif -%}
 
-                    <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                    <a href="{{ item.url }}" class="cart-item__name h4 break tw-no-underline tw-block tw-max-w-[30rem] tw-m-0;">{{ item.product.title | escape }}</a>
 
                     {%- if item.original_price != item.final_price -%}
                       <div class="cart-item__discounted-prices">
@@ -100,7 +101,7 @@
                         </strong>
                       </div>
                     {%- else -%}
-                      <div class="product-option">
+                      <div class="product-option tw-text-[1.4rem] tw-break-all tw-leading-normal tw-max-w-[30rem] tw-mt-[0.6rem] tw-m-0">
                         {{ item.original_price | money }}
                       </div>
                     {%- endif -%}
@@ -109,7 +110,7 @@
                       <dl>
                         {%- if item.product.has_only_default_variant == false -%}
                           {%- for option in item.options_with_values -%}
-                            <div class="product-option">
+                            <div class="product-option tw-text-[1.4rem] tw-break-all tw-leading-[1.05]">
                               <dt>{{ option.name }}: </dt>
                               <dd>{{ option.value }}</dd>
                             </div>
@@ -119,7 +120,7 @@
                         {%- for property in item.properties -%}
                           {%- assign property_first_char = property.first | slice: 0 -%}
                           {%- if property.last != blank and property_first_char != '_' -%}
-                            <div class="product-option">
+                            <div class="product-option tw-text-[1.4rem] tw-break-all tw-leading-[1.05]">
                               <dt>{{ property.first }}: </dt>
                               <dd>
                                 {%- if property.last contains '/uploads/' -%}
@@ -135,10 +136,10 @@
                         {%- endfor -%}
                       </dl>
 
-                      <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                      <p class="product-option tw-text-[1.4rem] tw-break-all tw-leading-[1.05]">{{ item.selling_plan_allocation.selling_plan.name }}</p>
                     {%- endif -%}
 
-                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                    <ul class="discounts list-unstyled tw-text-[1.2rem] tw-text-[1.2rem] tw-max-w-[30rem] tw-mt-[0.6rem] tw-m-0 tw-p-0" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                       {%- for discount in item.discounts -%}
                         <li class="discounts__discount">
                           {%- render 'icon-discount' -%}
@@ -148,17 +149,17 @@
                     </ul>
                   </td>
 
-                  <td class="cart-item__totals right medium-hide large-up-hide">
-                    <div class="loading-overlay hidden">
-                      <div class="loading-overlay__spinner">
+                  <td class="cart-item__totals right medium-hide large-up-hide tw-text-right align-top tw-relative tw-pl-16 tw-pt-16 tw-p-0 tw-border-[none]">
+                    <div class="loading-overlay hidden tw-absolute tw-z-[1] tw-w-[1.8rem] tw-hidden tw-pt-[4.5rem] tw-p-0 tw-right-0 tw-bottom-auto tw-inset-x-auto tw-inset-y-0 md:tw-left-0">
+                      <div class="loading-overlay__spinner tw-w-[1.8rem] tw-inline-block">
                         <svg
                           aria-hidden="true"
                           focusable="false"
-                          class="spinner"
+                          class="spinner tw-animate-[rotator_1.4s_linear_infinite]"
                           viewBox="0 0 66 66"
                           xmlns="http://www.w3.org/2000/svg"
                         >
-                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                          <circle class="path tw-origin-center tw-stroke-[rgb(var(--color-foreground))] tw-animate-[dash_1.4s_ease-in-out_infinite]" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                         </svg>
                       </div>
                     </div>
@@ -176,12 +177,12 @@
                           <dt class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
-                          <dd class="price price--end">
+                          <dd class="price price--end tw-block tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-[1.05] tw-text-[rgb(18,18,18)] tw-text-right tw-m-0 tw-p-0">
                             {{ item.final_line_price | money }}
                           </dd>
                         </dl>
                       {%- else -%}
-                        <span class="price price--end">
+                        <span class="price price--end md:tw-mt-4 md:tw-mb-0 tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-[calc(1_+_0.5_/_var(--font-body-scale))] tw-text-[rgb(var(--color-foreground))]">
                           {{ item.original_line_price | money }}
                         </span>
                       {%- endif -%}
@@ -203,17 +204,17 @@
                     </div>
                   </td>
 
-                  <td class="cart-item__quantity">
-                    <div class="cart-item__quantity-wrapper">
-                      <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
+                  <td class="cart-item__quantity lg:tw-pl-24 md:tw-align-top md:tw-pl-16 md:tw-pt-16 tw-p-0 tw-border-[none]">
+                    <div class="cart-item__quantity-wrapper tw-flex">
+                      <label class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw--m-px tw-p-0 tw-border-0" for="Quantity-{{ item.index | plus: 1 }}">
                         {{ 'products.product.quantity.label' | t }}
                       </label>
-                      <quantity-input class="quantity">
-                        <button class="quantity__button no-js-hidden" name="minus" type="button">
-                          <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                      <quantity-input class="quantity tw-text-[rgba(18,18,18)] tw-relative tw-w-[calc(14rem_/_1_+_1_*_2)] tw-flex min-h-[1_*_2)_+_4.5rem)] tw-rounded-none">
+                        <button class="quantity__button no-js-hidden tw-shadow-[inherit] tw-bg-inherit tw-ml-[1] tw-w-[calc(4.5rem_/_1)] tw-shrink-0 tw-text-[1.8rem] tw-bg-transparent tw-cursor-pointer tw-flex items-center tw-justify-center tw-text-[rgb(18,18,18)] tw-p-0 tw-border-0" name="minus" type="button">
+                          <span class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw--m-px tw-p-0 tw-border-0">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
                           {% render 'icon-minus' %}
                         </button>
-                        <input class="quantity__input"
+                        <input class="quantity__input tw-shadow-[inherit] tw-bg-inherit tw-text-current tw-text-[1.4rem] tw-font-medium tw-opacity-[0.85] tw-text-center tw-w-full tw-grow tw-appearance-none tw-px-2 tw-py-0 tw-border-0"
                           type="number"
                           name="updates[]"
                           value="{{ item.quantity }}"
@@ -222,24 +223,24 @@
                           id="Quantity-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
                         >
-                        <button class="quantity__button no-js-hidden" name="plus" type="button">
-                          <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                        <button class="quantity__button no-js-hidden tw-shadow-[inherit] tw-bg-inherit tw-w-[4.5rem] tw-shrink-0 tw-text-[1.8rem] tw-cursor-pointer tw-flex tw-items-center tw-justify-center tw-text-[rgb(18,18,18)] tw-mr-[1] tw-p-0 tw-border-0" name="plus" type="button">
+                          <span class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw--m-px tw-p-0 tw-border-0">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
                           {% render 'icon-plus' %}
                         </button>
                       </quantity-input>
 
-                      <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                        <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                      <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}" class="tw-flex tw-ml-6 tw-mr-0 tw-mt-2 tw-mb-0">
+                        <a href="{{ item.url_to_remove }}" class="button button--tertiary tw- text-[1.2rem] tw-tracking-[0.1rem] tw-leading-[1.02] tw-inline-flex tw-justify-center tw-items-center tw-cursor-pointer tw-no-underline tw-text-[rgb(18,18,18)] tw-transition-shadow tw-duration-100 tw-ease-[ease] tw-appearance-none tw-bg-[rgba(18,18,18,0)] tw-relative tw-ml-0 tw-mr-[0.1rem] tw-mt-0 tw-mb-[0.1rem] tw-p-0 tw-rounded-none tw-border-0" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                           {% render 'icon-remove' %}
                         </a>
                       </cart-remove-button>
                     </div>
-                    <div class="cart-item__error" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
-                      <small class="cart-item__error-text"></small>
+                    <div class="cart-item__error tw-flex tw-items-start tw-mt-4" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
+                      <small class="cart-item__error-text tw-text-[1.2rem] tw-order-1"></small>
                       <svg
                         aria-hidden="true"
                         focusable="false"
-                        class="icon icon-error"
+                        class="icon icon-error tw-hidden tw-shrink-0 tw-w-[1.2rem] tw-mr-[0.7rem] tw-mt-[0.4rem]"
                         viewBox="0 0 13 13"
                       >
                         <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
@@ -250,13 +251,13 @@
                     </div>
                   </td>
 
-                  <td class="cart-item__totals right small-hide">
-                    <div class="loading-overlay hidden">
-                      <div class="loading-overlay__spinner">
+                  <td class="cart-item__totals right small-hide tw-text-right tw-relative tw-p-0 tw-border-[none] md:tw-align-top md:tw-pl-16 md:tw-pt-16">
+                    <div class="loading-overlay hidden tw-absolute tw-z-[1] tw-w-[1.8rem] tw-hidden tw-p-0 tw-left-auto tw-top-0 md:tw-pt-[4.5rem] md:tw-bottom-auto md:tw-inset-x-0">
+                      <div class="loading-overlay__spinner tw-w-[1.8rem] tw-inline-block">
                         <svg
                           aria-hidden="true"
                           focusable="false"
-                          class="spinner"
+                          class="spinner tw-animate-[rotator_1.4s_linear_infinite]"
                           viewBox="0 0 66 66"
                           xmlns="http://www.w3.org/2000/svg"
                         >
@@ -279,12 +280,12 @@
                           <dt class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
-                          <dd class="price price--end">
+                          <dd class="price price--end md:tw-mt-4 md:tw-mb-0 tw-text-right tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-normal tw-text-[rgb(18,18,18)] tw-block tw-m-0 tw-p-0 md:tw-mt-4 md:tw-mb-0">
                             {{ item.final_line_price | money }}
                           </dd>
                         </dl>
                       {%- else -%}
-                        <span class="price price--end">
+                        <span class="price price--end md:tw-mt-4 md:tw-mb-0 tw-text-right tw-text-[1.6rem] tw-tracking-[0.1rem] tw-leading-normal tw-text-[rgb(18,18,18)] tw-block tw-m-0 tw-p-0 md:tw-mt-4 md:tw-mb-0">
                           {{ item.original_line_price | money }}
                         </span>
                       {%- endif -%}
@@ -311,8 +312,8 @@
       </div>
     </div>
 
-    <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
-    <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+    <p class="visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw-hidden tw--m-px tw-p-0 tw-border-0 md:tw-mt-0" id="cart-live-region-text" aria-live="polite" role="status"></p>
+    <p class="visually-hidden visually-hidden tw-absolute tw-overflow-hidden tw-w-px tw-h-px tw-hidden tw--m-px tw-p-0 tw-border-0 md:tw-mt-0" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
   </form>
 </cart-items>
 

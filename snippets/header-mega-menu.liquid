@@ -1,0 +1,215 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup tw-p-8"
+                tabindex="-1"
+              >
+              <!-- NEW MEGA MENU -->
+                  <div class="tw-max-w-3">
+                    {% if link.title  ==  "Bases & Colchones" %}
+                    <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Fotos_menu_COLCHON_1_1.webp?v=1692919304">
+                    <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">Smart Bamboo tiene la mejor tecnología y confort para tu descanso</p>
+                    {% elsif link.title  ==  "Sábanas" %}
+                    <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/menu_sabanas.webp?v=1703255848">
+                    <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">Descubre por qué las Sábanas de Smart Bamboo son las mejores para procurar un descanso correcto y las increíbles cualidades de sus materiales.</p>
+                    {% elsif link.title  ==  "Almohadas" %}
+                    <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Fotos_menu_ALMOHADA_2.webp?v=1692919304">
+                    <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">Innovación, calidad y máxima suavidad. Conoce tu nueva almohada favorita</p>
+                    {% elsif link.title  ==  "Sillones de Masajes" %}
+                    <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/menu_-_web_sillones.webp?v=1680639818">
+                    <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">¡Del spa a tu hogar!</p>
+                    {% endif %}
+                  </div>
+                <!-- NEW MEHA MENU -->
+                <ul
+                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  role="list"
+                > 
+                
+                  {%- for childlink in link.links -%}
+                    <li>
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <!-- NEW MEHA MENU -->
+                <div class="tw-max-w-3 tw-bg-[#f7f7f7] ">
+                                {% for child_link in link.links %}
+                                  {% for sub_child_link in child_link.links %}
+                                    {%- assign product = sub_child_link.object -%}
+                                      <a href="{{ product.url }}" class="general-subnav-submenu__body link_image tw-cursor-pointer" element_menu="{{ product.handle }}">
+                                        <div class="tw-relative">
+                                          <img loading="lazy" class="tw-w-full lozad" src="{{ product.featured_image | img_url: '500x' }} " alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
+                                          <div class="tw-flex tw-flex-row tw-justify-center tw-relative tw-bottom-[23px]">
+                                              {%- assign percent = 0 -%}
+                                              {% for option in product.variants %}
+                                                {% assign newPercent = option.compare_at_price | minus: option.price | times: 100.0 | divided_by: option.compare_at_price | round %}
+                                                {% if percent < newPercent %}
+                                                  {%- assign percent = newPercent -%}
+                                                {% endif %}
+                                              {% endfor %}
+
+                                              {% if percent == 0 %}  
+                                              {% else %}
+                                                  {% if product.price == 0.00 %}
+                                                  {% else %}
+                                                    <div class="tw-w-44 tw-bg-[#292929] tw-rounded">
+                                                      <p class="tw-font-poppins tw-text-white tw-text-[15px] tw-font-normal tw-text-center tw-py-1.5"><b>{{percent}}%</b> de descuento</p>
+                                                    </div>
+                                                  {% endif %}
+                                              {% endif %}
+                                              
+                                              
+                                            
+                                              
+                                            
+                                            
+
+                                          </div>
+                                        </div>
+                                        <div class="general-subnav-submenu__info tw-mb-8 tw-text-center">
+                                          {%- assign oldPrice = product.price -%}
+                                          {%- assign originalPrice = product.price -%}
+                                          {%- assign isDifferentPrice = false -%}
+                                          {% for option in product.variants %}
+                                            {% assign newPrice = option.price %}
+                                            {% if oldPrice > newPrice %}
+                                              {%- assign oldPrice = newPrice -%}
+                                            {% endif %}
+                                            {% if originalPrice != newPrice %}
+                                              {%- assign isDifferentPrice = true -%}
+                                            {% endif %}
+                                          {% endfor %}
+                                          
+                                          {% if product.price == 0.00 %}
+                                          {% else %}
+                                            <p class="tw-font-poppins tw-text-[#666666] tw-w-full tw-text-[15px] tw-font-normal tw-text-center tw-py-1 tw-bg-white tw-rounded tw-border tw-border-[1px] tw-border-solid tw-border-gray-200">{{ product.title }} <span class="tw-font-semibold tw-text-[#292929]">{% if isDifferentPrice %}Desde{% endif %} {{ oldPrice | money }}</span></p>
+                                          {% endif %}
+                                    
+                                        </div>
+                                        <div class="general-subnav-submenu__grid remove-box tw-w-full tw-flex tw-justify-between tw-align-items-start">
+
+                                          {% comment %} <div class="tw-text-center">
+                                            <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" data-src="{{ 'smart-icon-percent.svg' | asset_url }}" alt="3, 6, 12 y 24 MSI">
+                                            <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2">3, 6, 12 y 24 MSI</p>
+                                          </div> {% endcomment %}
+
+                                          {% if product.tags contains "benefit-tech" %}
+                                            <div class="tw-text-center">
+                                              <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" src="{{ 'smart-icon-tech.svg' | asset_url }}" alt="Servicio técnico de instalación">
+                                              <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2"><b class="tw-font-semibold tw-text-[#292929]">Servicio técnico</b> de instalación</p>
+                                            </div>
+                                          {% endif %}
+                                          {% if product.tags contains "benefit-120" %}
+                                            <div class="tw-text-center">
+                                              <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" src="{{ 'smart-icon-moon.svg' | asset_url }}" alt="365 noches de prueba">
+                                              <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2"><b class="tw-font-semibold tw-text-[#292929]">365 noches</b> de prueba</p>
+                                            </div>
+                                          {% endif %}
+                                          {% if product.tags contains "benefit-30" %}
+                                          
+                                            <div class="tw-text-center">
+                                              <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" src="{{ 'smart-icon-moon.svg' | asset_url }}" alt="180 noches de prueba">
+                                              <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2"><b class="tw-font-semibold tw-text-[#292929]">180 noches</b> de prueba</p>
+                                            </div>
+                                          {% endif %}
+                                          {% comment %} {% if product.tags contains "benefit-ret" %}
+                                            <div class="tw-text-center">
+                                              <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" data-src="{{ 'smart-icon-ret.svg' | asset_url }}" alt="Devoluciones sin costo">
+                                              <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2">Devoluciones <b class="tw-font-semibold tw-text-[#292929]">sin costo</b></p>
+                                            </div>
+
+                                          {% endif %} {% endcomment %}
+                                          <div class="tw-text-center">
+                                            <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" src="{{ 'smart-icon-approved.svg' | asset_url }}" alt="Satisfación garantizada">
+                                            <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2">Satisfacción garantizada</p>
+                                          </div>
+                                          <div class="tw-text-center">
+                                            <img loading="lazy" width="52" height="52" class="lozad tw-h-10 lg:tw-h-14 tw-w-10 lg:tw-w-14" src="{{ 'smart-icon-deliver.svg' | asset_url }}" alt="Envíos Gratis">
+                                            <p class="tw-font-poppins tw-text-[#434f5a] tw-text-[10px] lg:tw-text-[12px] tw-font-normal tw-mx-2 tw-mt-2">Envíos <b class="tw-font-semibold tw-text-[#292929]">Gratis</b></p>
+                                          </div>
+                                        </div>
+                                      </a>
+                                  {% endfor %}
+                                {% endfor %}
+                              </div>
+                            <!-- NEW MEHA MENU -->
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

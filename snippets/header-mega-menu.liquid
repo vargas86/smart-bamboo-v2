@@ -27,11 +27,11 @@
               </summary>
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
-                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup tw-p-8"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup tw-p-8 tw-pt-0"
                 tabindex="-1"
               >
               <!-- NEW MEGA MENU -->
-                  <div class="tw-max-w-3">
+                  <div class="megaMenuCol1">
                     {% if link.title  ==  "Bases & Colchones" %}
                     <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Fotos_menu_COLCHON_1_1.webp?v=1692919304">
                     <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">Smart Bamboo tiene la mejor tecnología y confort para tu descanso</p>
@@ -44,9 +44,15 @@
                     {% elsif link.title  ==  "Sillones de Masajes" %}
                     <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/menu_-_web_sillones.webp?v=1680639818">
                     <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">¡Del spa a tu hogar!</p>
+                    {% elsif link.title  ==  "Colchas & Edredones" %}
+                    <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Menu_colcha.webp?v=1703255848">
+                    <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">La elección perfecta para todas tus noches.</p>
+                    {% elsif link.title  ==  "Toallas & Accesorios" %}
+                    <img class="tw-w-full" src="https://cdn.shopify.com/s/files/1/0248/4705/6932/files/Fotos_menu_TOALLA_2.webp?v=1692919304">
+                    <p class="tw-text-sm tw-font-normal tw-font-poppins tw-mt-5">Nuestros productos como pijamas, colchonetas y batas te harán sentir especial, conoce más de nuestros productos.</p>
                     {% endif %}
                   </div>
-                <!-- NEW MEHA MENU -->
+                <!-- // NEW MEGA MENU -->
                 <ul
                   class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
@@ -67,7 +73,7 @@
                       {%- if childlink.links != blank -%}
                         <ul class="list-unstyled" role="list">
                           {%- for grandchildlink in childlink.links -%}
-                            <li>
+                            <li data-show="{{ grandchildlink.handle }}-block" class="hoverShow">
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
@@ -86,12 +92,12 @@
                     </li>
                   {%- endfor -%}
                 </ul>
-                <!-- NEW MEHA MENU -->
-                <div class="tw-max-w-3 tw-bg-[#f7f7f7] ">
+                <!-- NEW MEGA MENU -->
+                <div class="megaMenuCol3">
                                 {% for child_link in link.links %}
                                   {% for sub_child_link in child_link.links %}
                                     {%- assign product = sub_child_link.object -%}
-                                      <a href="{{ product.url }}" class="general-subnav-submenu__body link_image tw-cursor-pointer" element_menu="{{ product.handle }}">
+                                      <a href="{{ product.url }}" class="general-subnav-submenu__body link_image tw-cursor-pointer hide-blocks" element_menu="{{ product.handle }}" id="{{ product.handle }}-block">
                                         <div class="tw-relative">
                                           <img loading="lazy" class="tw-w-full lozad" src="{{ product.featured_image | img_url: '500x' }} " alt="Smart Bamboo es la línea más innovadora en colchones y accesorios de ropa de cama derivados del bambú">
                                           <div class="tw-flex tw-flex-row tw-justify-center tw-relative tw-bottom-[23px]">
@@ -114,11 +120,6 @@
                                               {% endif %}
                                               
                                               
-                                            
-                                              
-                                            
-                                            
-
                                           </div>
                                         </div>
                                         <div class="general-subnav-submenu__info tw-mb-8 tw-text-center">
@@ -187,7 +188,7 @@
                                   {% endfor %}
                                 {% endfor %}
                               </div>
-                            <!-- NEW MEHA MENU -->
+                            <!-- //NEW MEGA MENU -->
               </div>
             </details>
           </header-menu>
@@ -213,3 +214,66 @@
     {%- endfor -%}
   </ul>
 </nav>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all elements with the class 'hoverShow'
+    const hoverElements = document.querySelectorAll('.hoverShow');
+    // Select all elements with the class 'hide-blocks'
+    const hideBlocks = document.querySelectorAll('.hide-blocks');
+
+    // Hide all elements with the class 'hide-blocks' initially
+    hideBlocks.forEach(element => {
+        element.style.display = 'none';
+    });
+
+    // Show the first child element with the class 'hide-blocks' of each parent
+    const parents = new Set();
+    hideBlocks.forEach(element => {
+        const parent = element.parentElement;
+        if (parent && !parents.has(parent)) {
+            parents.add(parent);
+            const firstChild = parent.querySelector('.hide-blocks');
+            if (firstChild) {
+                firstChild.style.display = 'block';
+            }
+        }
+    });
+
+    // Preload images in hide-blocks elements
+    preloadImages(hideBlocks);
+
+    hoverElements.forEach(element => {
+        // Get the value of the data-show attribute
+        const targetId = element.getAttribute('data-show');
+        const targetElement = document.getElementById(targetId);
+
+        // Check if the target element exists
+        if (targetElement) {
+            // Add event listener for mouseover
+            element.addEventListener('mouseover', function() {
+                // Hide all elements with the class 'hide-blocks'
+                hideBlocks.forEach(block => {
+                    block.style.display = 'none';
+                });
+                // Show the target element
+                targetElement.style.display = 'block';
+            });
+        }
+    });
+});
+
+// Function to preload images
+function preloadImages(elements) {
+    elements.forEach(element => {
+        const images = element.querySelectorAll('img');
+        images.forEach(img => {
+            const src = img.getAttribute('src');
+            if (src) {
+                const preloadedImg = new Image();
+                preloadedImg.src = src;
+            }
+        });
+    });
+}
+
+</script>

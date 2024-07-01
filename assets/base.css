@@ -3467,3 +3467,7 @@ a#HeaderMenu-promociones:hover, a#HeaderMenu-promociones:hover span { text-decor
 #Details-HeaderMenu-1 .mega-menu__list {  grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .mega-menu__content { display: flex; } 
 .mega-menu__content { max-width: 1509px; margin: 0 auto; max-height: 800px; }
+.megaMenuCol1 { max-width:313px; padding-top:40px;}
+.megaMenuCol3 { max-width:420px; padding:40px; background-color: #f7f7f7; }
+.mega-menu__list { padding-top: 40px; }
+.hide-blocks { display: none;}

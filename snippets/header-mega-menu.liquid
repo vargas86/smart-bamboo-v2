@@ -251,8 +251,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (targetElement) {
             // Add event listener for mouseover
             element.addEventListener('mouseover', function() {
-                // Hide all elements with the class 'hide-blocks'
-                hideBlocks.forEach(block => {
+                const parent = targetElement.parentElement;
+                // Hide all sibling elements with the class 'hide-blocks'
+                const siblingBlocks = parent.querySelectorAll('.hide-blocks');
+                siblingBlocks.forEach(block => {
                     block.style.display = 'none';
                 });
                 // Show the target element
@@ -275,5 +277,4 @@ function preloadImages(elements) {
         });
     });
 }
-
 </script>

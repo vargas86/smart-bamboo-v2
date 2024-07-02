@@ -3464,10 +3464,12 @@ header summary.list-menu__item { padding:1rem 1.5rem 1rem 1rem; }
 .header__inline-menu .list-menu--inline li span { font-size: 0.9em; text-align: center;}
 #HeaderMenu-promociones { border-radius: 3px; background: #292929; color: #fff; padding: 6px 12px; font-weight: 600 !important; margin-left: 1rem; } 
 a#HeaderMenu-promociones:hover, a#HeaderMenu-promociones:hover span { text-decoration: none !important; }
-#Details-HeaderMenu-1 .mega-menu__list {  grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mega-menu__list {  grid-template-columns: repeat(2, minmax(0, 1fr)) !important; max-height: 500px; padding: 40px 5px; }
+.mega-menu__list>li { padding-left:40px; padding-right: 40px; border-left: 1px solid #e5e7eb; }
+#MegaMenu-Content-6 .mega-menu__list>li { border-left: none; }
 .mega-menu__content { display: flex; } 
-.mega-menu__content { max-width: 1509px; margin: 0 auto; max-height: 800px; }
+.mega-menu__content { max-width: 1200px; margin: 0 auto; max-height: 800px; padding:2rem 0 0 2rem !important; }
 .megaMenuCol1 { max-width:313px; padding-top:40px;}
 .megaMenuCol3 { max-width:420px; padding:40px; background-color: #f7f7f7; }
-.mega-menu__list { padding-top: 40px; }
 .hide-blocks { display: none;}
+.megaMenuCol3 a { text-decoration: none;} 

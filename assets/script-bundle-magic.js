@@ -20,6 +20,7 @@ let cartObj = {
   }
   
   function buyProducts(){
+
     let articulosCart = 0
      
     var formData = new FormData();
@@ -649,72 +650,51 @@ function getVariantOriginalPrice(productHandle, variantID){
   }
   
 
+
       function cartDrawer(cart){
-        console.log(cart)
-        let content = '<div id="shopify-section-section-cart-drawer-items" class="shopify-section tw-absolute tw-left-0 tw-top-0 tw-w-full tw-h-full">'
+
+
+            response = cart
+            console.log('Product added to cart:', response);
+            fetch(`${routes.cart_url}?section_id=cart-drawer`)
+            .then((response) => response.text())
+            .then((responseText) => {
+            jQuery('.drawer__inner-empty').fadeOut(0)
+            jQuery('.drawer__header').fadeIn(0)
+            jQuery('cart-drawer-items').fadeIn(0)
+            const html = new DOMParser().parseFromString(responseText, 'text/html');
+            const selectors = ['cart-drawer-items', '.drawer__footer'];
+            for (const selector of selectors) {
+            const targetElement = document.querySelector(selector);
+            const sourceElement = html.querySelector(selector);
+            if (targetElement && sourceElement) {
+            targetElement.replaceWith(sourceElement);
+            }
+            }
+            jQuery('.drawer').addClass('active')
+            jQuery('.drawer').removeClass('is-empty')
+
+            })
+            .catch((e) => {
+            console.error(e);
+            });
+            
+            
+         
+
+        console.log('drawing2')
+/*
+        let content = '<div id="CartDrawer-CartItems" class="shopify-section tw-absolute tw-left-0 tw-top-0 tw-w-full tw-h-full">'
    
         cart.items.forEach(item => { 
             const ahorroBundleMagic = getVariantOriginalPrice(item.handle, item.variant_id) - item.discounted_price;
-            content += ` 
-       
-        <div class="tw-mb-[15px] tw-py-[20px] tw-px-[10px] tw-rounded-md tw-shadow hover:tw-shadow-md tw-max-w-[99%] tw-m-auto">
-      <div class="tw-grid tw-grid-cols-[50px_1fr_1fr] md:tw-grid-cols-[100px_1fr_1fr] tw-items-start tw-gap-[10px]">
-        <picture class="tw-flex tw-justify-center tw-items-center">
-            <a ref="${item.url}">
-                <img class="tw-w-[50px] md:tw-w-full tw-h-[50px] md:tw-h-full tw-rounded-full md:tw-rounded-none tw-object-cover" height="75" width="100" loading="lazy" src="${item.image}?width=100" alt="${item.product_title}">
-            </a>
-        </picture>
-
-        <div class="text-left">
-          <p class="tw-leading-[1.1]">
-            <a class="tw-font-poppins tw-font-semibold tw-text-color-4 tw-mb-[5px] tw-text-[11px] md:tw-text-[13px]" href="${item.url}">${item.product_title} 
-          <span class="booster-cart-item-success-notes" data-key="${item.key}"></span><span class="booster-cart-item-upsell-notes" data-key="${item.key}"></span></a>
-          </p>
-          <p class="tw-font-poppins tw-font-normal tw-leading-[1.1] tw-text-color-5 tw-text-[10px] md:tw-text-[12px]"> ${item.variant_title}
-          <span class="booster-cart-item-success-notes" data-key="${item.key}"></span><span class="booster-cart-item-upsell-notes" data-key="${item.key}"></span></p>
-                  </div>
-
-        <div class="tw-text-right">
-          <s class="tw-font-poppins tw-font-semibold tw-leading-[1.3] tw-text-color-5 tw-mb-[5px] tw-text-[9px] md:tw-text-[11px]">` + numberWithCommasAndPrice(getVariantOriginalPrice(item.handle, item.variant_id)) + `</s>
-          <p class="tw-font-poppins tw-font-bold tw-leading-[1.3] tw-text-color-4 tw-mb-[5px] tw-text-[11px] md:tw-text-[13px]">` + numberWithCommasAndPrice(item.discounted_price) + `</p>
-         
-          ${ahorroBundleMagic > 0 ? `<p class="tw-font-poppins tw-font-semibold tw-leading-[1.3] tw-mb-[5px] tw-text-[10px] md:tw-text-[12px] tw-text-color-3">
-                <span class="tw-uppercase">Ahorras:</span>
-                ${numberWithCommasAndPrice(ahorroBundleMagic)}
-            </p>` : ''}
- 
-        </div>
-      </div>
-      <div class="tw-grid tw-grid-cols-[auto_1fr_1fr] md:tw-grid-cols-[100px_1fr_1fr] tw-items-center tw-gap-[10px] tw-mt-[10px]">
-      <div></div>
-      
-      <div>
-        <button class="tw-font-poppins tw-font-semibold tw-text-[15px] tw-py-[5px] tw-px-[10px] tw-cursor-pointer tw-transition-transform hover:tw-scale-150" data-index="0" data-action="down">-</button>
-        <input class="tw-border tw-border-solid tw-border-color-6 tw-rounded-md tw-w-[50px] tw-h-[30px] tw-text-center tw-font-poppins tw-font-semibold tw-text-[12px] disabled:tw-bg-white" type="number" min="0" value="${item.quantity}" disabled="" id="input-0" data-id="${item.key}">
-        <button class="tw-font-poppins tw-font-semibold tw-text-[15px] tw-py-[5px] tw-px-[10px] tw-cursor-pointer tw-transition-transform hover:tw-scale-150" data-index="0" data-action="up">+</button>
-      </div>
-
-      <div class="tw-text-right">
-        <span class="tw-inline-flex tw-cursor-pointer p-[5px]" data-action="delete" data-id="${item.key}">
-          <svg class="tw-pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="18.181" height="22.33" viewBox="0 0 18.181 22.33">
-<g id="Trash" transform="translate(-1154.516 -157.269)">
-  <path id="Trazado_10" data-name="Trazado 10" d="M1171.037,162.2a.565.565,0,0,0-.638.482l-2.009,14.447a1.5,1.5,0,0,1-1.311,1.337h-6.945a1.5,1.5,0,0,1-1.311-1.337l-2.009-14.447a.565.565,0,0,0-1.12.156l2.009,14.447a2.817,2.817,0,0,0,.819,1.616,2.325,2.325,0,0,0,1.612.7h6.945a2.325,2.325,0,0,0,1.612-.7,2.806,2.806,0,0,0,.819-1.616l2.01-14.447A.565.565,0,0,0,1171.037,162.2Z" fill="#292929"></path>
-  <path id="Trazado_11" data-name="Trazado 11" d="M1161.494,176.9h.03a.566.566,0,0,0,.535-.6l-.616-11.635a.566.566,0,0,0-1.13.06l.616,11.635A.566.566,0,0,0,1161.494,176.9Z" fill="#292929"></path>
-  <path id="Trazado_12" data-name="Trazado 12" d="M1165.719,176.9a.566.566,0,0,0,.565-.536l.616-11.635a.566.566,0,0,0-1.13-.06l-.616,11.635a.566.566,0,0,0,.535.6Z" fill="#292929"></path>
-  <path id="Trazado_13" data-name="Trazado 13" d="M1172.131,160.24h-5.853v-1.011a2.093,2.093,0,0,0-2.2-1.96h-.941a2.093,2.093,0,0,0-2.2,1.96v1.011h-5.853a.565.565,0,1,0,0,1.131h17.049a.565.565,0,1,0,0-1.131Zm-10.065-1.011a.987.987,0,0,1,1.07-.829h.941a.987.987,0,0,1,1.07.829v1.011h-3.081Z" fill="#292929"></path>
-</g>
-</svg>
-
-        </span>
-      </div>
-    </div>
-  </div>
-        ` 
+            content += `  ` 
        
     });
     content += '</div>'
-    jQuery('#js-cart-drawer-items').html(content)
-    jQuery('cart-drawer').addClass('cart-drawer--open')
+    jQuery('.cart-items').html(content)
+    document.querySelector('.drawer').classList.add('active');
     jQuery('#js-cart-drawer-total').html(numberWithCommasAndPrice(cart.total_price))
-
+    */
+    
       }

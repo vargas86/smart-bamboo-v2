@@ -4,8 +4,10 @@ let availableProductsCoupon = []
 
   function buyProducts(){
       availableProductsCoupon = []
+      
 
       var formData = new FormData();
+
       cartObj.forEach(function(item, index){
           formData.append("updates["+item.datavariant+"]", item.datacantidad)
           availableProductsCoupon.push(item.dataproductid)
@@ -14,6 +16,9 @@ let availableProductsCoupon = []
         if(availableProducts.sort().join(',') === availableProductsCoupon.sort().join(',')){ 
             fetch('/discount/' + currentcoupon)
         }
+    
+        console.log('formData')
+      console.log(formData)
         
     fetch('/cart/update.js', {
       method: 'POST',
@@ -33,10 +38,10 @@ let availableProductsCoupon = []
           }
       
       });
-      //console.log( response.json() )
+      console.log( response.json() )
     })
     .catch((error) => {
-      //console.error('Error:', error);
+      console.error('Error:', error);
     });
   }
   
@@ -508,7 +513,23 @@ function getVariantOriginalPrice(productHandle, variantID){
   
 
       function cartDrawer(cart){
-        console.log(cart)
+        console.log('drawing') 
+
+              fetch('/cart')
+                  .then(response => response.text())
+                  .then(html => {
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(html, 'text/html');
+                      const newCartContents = doc.querySelector('.cart-drawer-content').innerHTML;
+                      document.querySelector('.cart-drawer-content').innerHTML = newCartContents;
+                  })
+                  .catch(error => console.error('Error updating cart drawer:', error));
+     
+      
+
+        //console.log(cart)
+        
+        /*
         let content = '<div id="shopify-section-section-cart-drawer-items" class="shopify-section tw-absolute tw-left-0 tw-top-0 tw-w-full tw-h-full">'
    
         cart.items.forEach(item => { 
@@ -574,6 +595,8 @@ function getVariantOriginalPrice(productHandle, variantID){
     jQuery('#js-cart-drawer-items').html(content)
     jQuery('cart-drawer').addClass('cart-drawer--open')
     jQuery('#js-cart-drawer-total').html(numberWithCommasAndPrice(cart.total_price))
+*/
+
 
       }
 
@@ -595,7 +618,7 @@ jQuery(document).ready(function(){
         var thisProduct = {datavariant, datanombre, datatamano, dataprecio, datapreciodescuento, datacantidad, dataproductid}
         cartObj = cartObj.filter(item => item.dataproductid !== dataproductid) //Quitar elemento ya existente en array
         cartObj.push(thisProduct)
-        updateResumen()
+        //updateResumen()
     })
 
     jQuery('.magiccartmainprice').click(function(){ 

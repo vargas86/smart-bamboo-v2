@@ -1,8 +1,11 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> 
+{% comment %} <script src="{{ '../assets/script-dopple-basicos.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+<script src="{{ '../assets/script-bundle-magic.js' | asset_url }}" defer="defer"></script>
 <div class="tw-px-0 md:tw-px-6 tw-max-w-[750px] md:tw-max-w-[300px] lg:tw-max-w-[320px] xl:tw-max-w-[370px]">
-    <div class="tw-hidden lg:tw-block"> 
+    <div class="tw-hidden lg:tw-block">  
         <h1 class="tw-font-lora tw-text-[#434f5a] tw-text-[23px] tw-font-bold tw-tracking-tight tw-mt-5" title>{{ product.title | remove: 'Copy of'}}</h1> 
         
-        <div class="component-descrip-stars__container">
+        <div class="component-descrip-stars__container"> 
             <div class="yotpo bottomLine"
                 data-appkey="NdPY4Ev7Qr4BsFowXrmmV6GnmtOsFjqOBvypZdXI"
                 data-domain="{{ shop.permanent_domain | escape }}"
@@ -63,7 +66,7 @@
             <div class="tw-flex tw-flex-col">
                 <button onclick="productSizesVariantButton('{{ variant.id }}', '{{ product.title }}', '{{ variant.title }}', '{{ variant.compare_at_price | money_without_trailing_zeros | remove: '$ ' }}', '{{ variant.price | money_without_trailing_zeros | remove: '$ '}}')" 
                     id="{{ idProduct }}{{ size | remove: " " | remove: "/" | remove: "Copyof" }}"
-                    class="tagColchonSmartButtonSizes tw-flex tw-flex-col hover:tw-bg-[#434F5A] focus:tw-bg-[#292929] tw-text-[#292929] hover:tw-text-white focus:tw-text-white tw-font-semibold tw-rounded-lg tw-border-solid tw-border-[1px] tw-border-[#A5A5A5] hover:tw-border-[#434F5A] focus:tw-border-[#292929] tw-flex tw-justify-center tw-items-center tw-px-2 tw-py-2 tw-font-poppins tw-text-base lg:tw-text-base tw-font-normal setCookie" data-cookie-name="{{ idProduct }}" ProductId="{{ product.id }}" VariantId="{{ variant.id }}"
+                    class="tagColchonSmartButtonSizes tw-flex tw-flex-col hover:tw-bg-[#434F5A] focus:tw-bg-[#292929] tw-text-[#292929] hover:tw-text-white focus:tw-text-white tw-font-semibold tw-rounded-lg tw-border-solid tw-border-[1px] tw-border-[#A5A5A5] hover:tw-border-[#434F5A] focus:tw-border-[#292929] tw-flex tw-justify-center tw-items-center tw-px-2 tw-py-2 tw-font-poppins tw-text-base lg:tw-text-base tw-font-normal setCookie magiccart" data-cookie-name="{{ idProduct }}" ProductId="{{ product.id }}" VariantId="{{ variant.id }}"
                 > 
                     {{ variant.title }}
                 </button> 
@@ -86,6 +89,11 @@
         
     </div>
 
+    {% assign metafield_value = product.metafields.custom.coupon %}
+    <script>
+    let availableProducts = [ '{{ product.id }}' ]
+    const currentcoupon = '{{ metafield_value }}';
+    </script>
     {% assign productList = product.metafields.custom.smart_bundle_bamboo.value %}
     <div>
         {% for product in productList %}
@@ -106,5 +114,3 @@
     </div>
 </div>
 
-{% comment %} <script src="{{ '../assets/script-dopple-basicos.js' | asset_url }}" defer="defer"></script> {% endcomment %}
-<script src="{{ '../assets/script-bundle-magic.js' | asset_url }}" defer="defer"></script>
